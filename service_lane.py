@@ -1,5 +1,6 @@
 # https://www.hackerrank.com/challenges/service-lane
 
+
 def get_largest_vehicle_type(lane, i, j):
     return min(lane[i:j+1])
 
