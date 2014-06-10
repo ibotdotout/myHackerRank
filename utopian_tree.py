@@ -1,3 +1,5 @@
+# https://www.hackerrank.com/challenges/utopian-tree
+
 def growth(num):
     result = 1
     for i in range(num):
