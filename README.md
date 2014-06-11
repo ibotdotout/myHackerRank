@@ -1,4 +1,6 @@
 myHackerRank
 ============
+https://www.hackerrank.com/
 
-https://www.hackerrank.com/challenges/
+myProfile
+https://www.hackerrank.com/ibotdotout
