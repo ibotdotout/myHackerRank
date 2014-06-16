@@ -2,11 +2,15 @@
 
 
 def insert_sort(l):
-    itr_l = [l[0]]
-    for key, val in enumerate(l[1:]):
-        itr_l.append(val)
-        itr_l.sort()
-        yield itr_l + l[key+2:]
+    for i in range(1, len(l)):
+        val = l[i]
+        k = i - 1
+        while k >= 0 and l[k] > val:
+            l[k+1] = l[k]
+            k -= 1
+        l[k+1] = val
+        #  if yield l that will return reference of l insted of l's data
+        yield l[:]
 
 if __name__ == "__main__":
     N = input()
