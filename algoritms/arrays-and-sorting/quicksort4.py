@@ -2,32 +2,24 @@
 
 
 def quick_sort(l):
-    count = []
-    partition(count, l, 0, len(l))
-    return sum(count)
+    return partition(l, 0, len(l))
 
 
-def partition(count, l, m, n):
+def partition(l, m, n):
     if n-m <= 1:
-        return l
-    pivot = n-1
+        return 0
+    p = m
     pivot_val = l[n-1]
-    bigger_idx = []
-    swap_count = 0
+    swap_count = 1
     for i in range(m, n-1):
         if l[i] < pivot_val:
+            l[p], l[i] = l[i], l[p]
             swap_count += 1
-            if bigger_idx:
-                idx, bigger_idx = bigger_idx[0], bigger_idx[1:]
-                l[i], l[idx] = l[idx], l[i]
-        elif l[i] > pivot_val:
-            pivot -= 1
-            bigger_idx.append(i)
-    l[pivot], l[n-1] = l[n-1], l[pivot]
-    l = partition(count, l, m, pivot)
-    l = partition(count, l, pivot + 1, n)
-    count.append(swap_count + 1)
-    return l
+            p += 1
+    l[p], l[n-1] = l[n-1], l[p]
+    swap_count += partition(l, m, p)
+    swap_count += partition(l, p + 1, n)
+    return swap_count
 
 
 def insert_sort(l):
