@@ -16,9 +16,11 @@ watch ('(.*).py') {|md| code_changed "#{md[0]}"}
 def code_changed(file)
     # clear console
     system("clear")
+    print("#{file}\n\n")
     # check if it not test file chnage to it's test file
     if not file.end_with?("_test.py")
-      file[".py"] = "_test.py"
+      basename = File.basename(file,'.py')
+      file[basename] = "tests/" + basename + "_test"
     end
     # print filename
     print("#{file}\n\n")
