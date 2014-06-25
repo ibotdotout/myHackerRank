@@ -3,14 +3,13 @@
 
 def get_string_order(l):
     half = len(l)/2
-    for i in range(half):
-        a, b = l[i]
-        l[i] = (a, '-')
-    l.sort(key=lambda item: item[0])
-    result = ""
-    for k, v in l:
-        result += ' '+v
-    return result.strip()
+    helper = [[] for i in range(100)]
+    for i, (k, v) in enumerate(l):
+        if i < half:
+            v = '-'
+        helper[k].append(v)
+    result = sum(helper, [])  # flattened list.
+    return ' '.join(result)
 
 if __name__ == '__main__':
     n = input()
