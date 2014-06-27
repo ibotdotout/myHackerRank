@@ -6,8 +6,8 @@ def minimax(l, pq):
     l.sort()
     m = [p, q]
 
-    for i in range(len(l)):
-        mid = (l[i] + l[i-1]) / 2
+    for a, b in zip(l, l[1:]):
+        mid = (a + b) / 2
         if mid >= p and mid <= q:
             m.append(mid)
     nm = lambda m: [min([abs(i - m) for i in l]), m]
@@ -16,7 +16,6 @@ def minimax(l, pq):
     from functools import cmp_to_key
     cmpf = lambda a, b: b[1]-a[1] if a[0] == b[0] else a[0]-b[0]
     m = max(m, key=cmp_to_key(cmpf))
-
     return m[1]
 
 if __name__ == "__main__":
