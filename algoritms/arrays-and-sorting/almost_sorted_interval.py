@@ -1,8 +1,11 @@
 # https://www.hackerrank.com/challenges/almost-sorted-interval
+
 # Solution From
 # https://www.hackerrank.com/challenges/almost-sorted-interval/editorial
+
 # Not Completed
-# got 60/100 fail with time out
+# got 60/100 fail with time out but in c/c++ this algorithm can sovle very fast
+# try to use dynamic stack but static stack is better
 
 
 def low_bit(x):
@@ -33,6 +36,7 @@ def permute(l):
     bit = [0] * (n+12)
     r = [[] for _ in xrange(n)]  # create 2d list with deep copy
 
+    # after testcase 6 find left[],right[] take a round 3s
     top = 0
     for i in xrange(1, n):
         while top > 0 and l[i] > l[stack[top-1]]:
@@ -49,6 +53,7 @@ def permute(l):
         stack[top] = i
         top += 1
 
+    # big neck bottle
     ans = 0
     for i in xrange(n-1, 0, -1):
         for j in r[i]:
