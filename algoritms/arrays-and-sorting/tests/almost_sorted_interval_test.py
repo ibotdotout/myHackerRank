@@ -28,3 +28,9 @@ class AlmostSortedInterval(unittest.TestCase):
         expected_result = 2202
         result = asi.permute(l)
         self.assertEqual(expected_result, result)
+
+    def test_case4_get_15(self):
+        l = range(10**6)
+        expected_result = 500000500000
+        result = asi.permute(l)
+        self.assertEqual(expected_result, result)
