@@ -5,10 +5,12 @@
 
 # Not Completed
 # got 60/100 fail with time out but in c/c++ this algorithm can sovle very fast
+# try in python 3 got 60/100 but slower than python 2
 # try to use dynamic stack but static stack is better
 
 # Good Python alogritm with intervals 60/100
 # https://www.hackerrank.com/rest/contests/master/challenges/almost-sorted-interval/hackers/leepenkman/download_solution
+# https://www.hackerrank.com/rest/contests/master/challenges/almost-sorted-interval/hackers/euclidian/download_solution
 
 
 def low_bit(x):
