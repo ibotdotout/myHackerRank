@@ -1,10 +1,10 @@
 # https://www.hackerrank.com/contests/projecteuler/challenges/euler001
 
 import unittest
-import euler001 as euler
+import multiples_of_3_and_5 as euler
 
 
-class Euler001Test(unittest.TestCase):
+class MultiplesOf3And5Test(unittest.TestCase):
     def test_case_10_should_get_23(self):
         n = 10
         expected_result = 23

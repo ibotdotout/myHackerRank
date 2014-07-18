@@ -1,10 +1,10 @@
 # https://www.hackerrank.com/contests/projecteuler/challenges/euler002
 
 import unittest
-import euler002 as euler
+import even_fibonacci_numbers as euler
 
 
-class Euler002Test(unittest.TestCase):
+class EvenFibonacciNumbersTest(unittest.TestCase):
     def test_input_10_should_get_10(self):
         n = 10
         expected_result = 10

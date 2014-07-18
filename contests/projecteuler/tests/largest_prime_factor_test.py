@@ -1,10 +1,10 @@
 # https://www.hackerrank.com/contests/projecteuler/challenges/euler003
 
 import unittest
-import euler003 as euler
+import largest_prime_factor as euler
 
 
-class Euler003Test(unittest.TestCase):
+class LargestPrineFactorTest(unittest.TestCase):
     def test_give_8_should_be_2(self):
         n = 8
         expected_result = 2

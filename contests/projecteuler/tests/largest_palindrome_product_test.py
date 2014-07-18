@@ -1,10 +1,10 @@
 # https://www.hackerrank.com/contests/projecteuler/challenges/euler004
 
 import unittest
-import euler004 as euler
+import largest_palindrome_product as euler
 
 
-class Euler004Test(unittest.TestCase):
+class LargestPalindromeProductTest(unittest.TestCase):
     def test_given_101110_should_be_101101(self):
         given = 101110
         expected = 101101
