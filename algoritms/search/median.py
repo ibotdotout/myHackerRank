@@ -2,35 +2,34 @@
 
 
 def running_median(orders):
+    """ insert v in sorted list """
     def append(l, v):
         import bisect
-        idx = bisect.bisect_left(l, v)
-        l.insert(idx, v)
+        bisect.insort(l, v)
         return True
 
     def remove(l, v):
-        if v in l:
-            l.remove(v)
+        """ binary search then pop() is faster than if v in l than remove() """
+        import bisect
+        idx = bisect.bisect_left(l, v)
+        if idx < len(l) and l[idx] == v:
+            l.pop(idx)
             return bool(l)
 
-    def reduce_decimal_floating(v):
-        if abs(v - int(v)) <= 0:
-            v = int(v)
-        return v
-
     l = []
-    cmd = {'r': lambda x: remove(l, x),
-           'a': lambda x: append(l, x)}
+    cmd = {'r': remove, 'a': append}
 
     for c, v in orders:
-        if not cmd[c](v):
+        if not cmd[c](l, v):
             yield "Wrong!"
         else:
             n = len(l)
+            midle = n/2
             if n % 2 == 1:  # is odd
-                yield l[n/2]
+                yield l[midle]
             else:  # is even
-                yield reduce_decimal_floating(sum(l[n/2 - 1: n/2 + 1])/2.0)
+                median = sum(l[midle - 1: midle + 1])/2.0
+                yield int(median) if median.is_integer() else median
 
 if __name__ == '__main__':
     cmd = lambda x: (x[0], int(x[1]))
