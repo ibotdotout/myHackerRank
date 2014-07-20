@@ -12,17 +12,21 @@ class BinaryIndexedTree():
         self.max_value = max_value
         self.arr = [0] * max_value
 
-    def low_bit(self, num):
-        return num & (-num)
-
-    def add(self, x):
-        while x <= self.max_value:
-            self.arr[x] += 1
-            x += self.low_bit(x)
-
     def get(self, x):
+        return self.query(x) - self.query(x - 1)
+
+    def set(self, x, v):
+        curr = self.get(x)
+        self.update(x, v - curr)
+
+    def update(self, x, v):
+        while x <= self.max_value:
+            self.arr[x] += v
+            x += x & -x
+
+    def query(self, x):
         val = 0
         while x > 0:
             val += self.arr[x]
-            x -= self.low_bit(x)
+            x -= x & -x
         return val
