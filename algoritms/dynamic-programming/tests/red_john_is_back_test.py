@@ -5,9 +5,14 @@ import red_john_is_back as rj
 
 
 class RedJohnIsBack(unittest.TestCase):
-    def test_arrage_brick_given_3_should_be_0(self):
+    @classmethod
+    def setUpClass(cls):
+        rj.gernerate_arrage_brick()
+        rj.generate_primes()
+
+    def test_arrage_brick_given_3_should_be_1(self):
         given = 3
-        expected = 0
+        expected = 1
         result = rj.arrage_brick(given)
         self.assertEqual(expected, result)
 
