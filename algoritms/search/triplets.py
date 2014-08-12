@@ -1,7 +1,7 @@
 # https://www.hackerrank.com/challenges/triplets
 
 
-class BinaryIndexedTree():
+class BinaryIndexedTree(object):
     def __init__(self, max_value):
         self.max_value = max_value
         self.arr = [0] * max_value
