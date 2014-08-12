@@ -1,7 +1,7 @@
 # https://www.hackerrank.com/challenges/class-2-find-the-torsional-angle
 
 
-class Point():
+class Point(object):
     def __init__(self, x, y, z):
         self.x = x
         self.y = y

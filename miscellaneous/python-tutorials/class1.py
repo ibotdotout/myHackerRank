@@ -1,7 +1,7 @@
 # https://www.hackerrank.com/challenges/class-1-dealing-with-complex-numbers
 
 
-class ComplexNumber():
+class ComplexNumber(object):
     def __init__(self, real, imaginary):
         self.real = real
         self.imaginary = imaginary
