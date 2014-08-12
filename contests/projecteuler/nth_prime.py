@@ -13,7 +13,7 @@ def generate():
         Gereate primes with Sieve algorithm
         http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
     """
-    global sieve, primes
+    global primes
     zeros = [False] * (len(sieve) / 2)
     for i in xrange(2, int(len(sieve) ** 0.5) + 1):
         if sieve[i]:
@@ -22,7 +22,6 @@ def generate():
 
 
 def solve(n):
-    global primes
     return primes[n-1]
 
 if __name__ == '__main__':
