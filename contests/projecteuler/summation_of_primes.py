@@ -7,9 +7,6 @@ memo = {2: 0, 3: 0}
 
 
 def solve(n):
-    global primes
-    global ans
-    global memo
     if n > primes[-1]:
         for i in xrange(primes[-1], n+1, 2):
             for prime in primes:
