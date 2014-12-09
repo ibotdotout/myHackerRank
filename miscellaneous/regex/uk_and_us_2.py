@@ -5,7 +5,7 @@ import re
 
 def solve(text, word):
     _w = word.lower().replace("our", "or")
-    return len(re.findall("(?i)"+word+"(\W|$)|"+_w+"(\W|$)", text))
+    return len(re.findall("(?i)"+word+r"\b|"+_w+r"\b", text))
 
 
 if __name__ == '__main__':
