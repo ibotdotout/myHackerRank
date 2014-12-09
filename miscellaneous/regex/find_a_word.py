@@ -4,7 +4,7 @@ import re
 
 
 def solve(text, word):
-    return len(re.findall('(^|(?:\W))'+word+'($|(?=\W))', text))
+    return len(re.findall(r'\b'+word+r'\b', text))
 
 
 if __name__ == "__main__":
