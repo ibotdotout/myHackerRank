@@ -1,11 +1,11 @@
 # https://www.hackerrank.com/challenges/detect-html-links
-
 import re
 
 
 def solve(text):
-    regex = '(?:<\s*a\s*href=")([^"]+?)(?:".*?>)(?:<.+?>)*\s*(.*?)\s*(?=</)'
-    return [",".join(i) for i in re.findall(regex, text)]
+    regex = '(?:<a href=")([^"]+?)(?:".*?>)(.*?)(?=</)'
+    return [re.sub('<.*>', '', ",".join([x.strip() for x in i]))
+            for i in re.findall(regex, text)]
 
 if __name__ == '__main__':
     n = input()
