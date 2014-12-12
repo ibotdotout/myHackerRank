@@ -4,8 +4,8 @@ import re
 
 
 def solve(text):
-    regex = '(?:<a\shref=")([^"]+?)(?:".*?>)(?:<.+?>)*(.*?)(?=</)'
-    return [",".join([x.strip() for x in i]) for i in re.findall(regex, text)]
+    regex = '(?:<\s*a\s*href=")([^"]+?)(?:".*?>)(?:<.+?>)*\s*(.*?)\s*(?=</)'
+    return [",".join(i) for i in re.findall(regex, text)]
 
 if __name__ == '__main__':
     n = input()
