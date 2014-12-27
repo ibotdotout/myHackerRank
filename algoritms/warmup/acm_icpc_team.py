@@ -1,20 +1,16 @@
 # https://www.hackerrank.com/challenges/acm-icpc-team
-
-
-def merge(a, b):
-    return "".join([x if x == '1' else y for x, y in zip(a, b)])
+from itertools import combinations
 
 
 def solve(l):
-    merged = []
     max_count, team_count = 0, 0
-    for i in range(len(l)):
-        for j in range(i+1, len(l)):
-                x = merge(l[i], l[j])
-                count = x.count('1')
-                max_count = count if count > max_count else max_count
-                merged.append(x)
-    team_count = len([i for i in merged if i.count('1') == max_count])
+    merged = [bin(int(a, 2) | int(b, 2)) for a, b in combinations(l, 2)]
+    for i in merged:
+        count = i.count('1')
+        if count > max_count:
+            max_count, team_count = count, 1
+        elif count == max_count:
+            team_count += 1
     return [max_count, team_count]
 
 if __name__ == '__main__':
