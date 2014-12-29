@@ -11,24 +11,15 @@ def quick_sort3(l):
 def qsort(ans, l, m, n):
     if n - m <= 1:
         return l
-    last = len(l[m:n-1])
-    idx = m
-    pivot = l[n-1]
-    while idx < m + last:
-        if l[idx] >= pivot:
-            curr = idx
-            fwd = idx + 1
-            while l[fwd] >= pivot and fwd < m + last:
-                fwd += 1
-            if fwd != n-1:
-                l[curr], l[fwd] = l[fwd], l[curr]
-        idx += 1
-    correct_idx = m + len([i for i in l[m:n-1] if i < pivot])
-    l[correct_idx], l[n-1] = l[n-1], l[correct_idx]
+    pivot, curr = l[n-1], m
+    for fwd in range(m, n-1):
+        if l[fwd] <= pivot:
+            l[curr], l[fwd] = l[fwd], l[curr]
+            curr += 1
+    l[curr], l[n-1] = l[n-1], l[curr]
     ans.append([i for i in l])
-    p_idx = correct_idx
-    l = qsort(ans, l, m, p_idx)
-    l = qsort(ans, l, p_idx+1, n)
+    l = qsort(ans, l, m, curr)
+    l = qsort(ans, l, curr+1, n)
     return l
 
 if __name__ == "__main__":
