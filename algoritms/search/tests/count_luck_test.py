@@ -15,3 +15,11 @@ class CountLuckTest(unittest.TestCase):
         forest = [".X.X......X", ".X*.X.XXX.X", ".XX.X.XM...", "......XXXX."]
         res = cl.solve(forest)
         self.assertEqual(res, 3)
+
+    def test_sample_3_should_be_9(self):
+        forest = ["...XXXXXXXXXXXXXXXXXXX...................",
+                  ".X..X.X.X.X.X.X.X..XXXX*X.X.X.X.X.X.X.XXM",
+                  ".XXXX.X.X.X.X.X.X.XX.X.X.X.X.X.X.X.X.X.X.",
+                  "........................................."]
+        res = cl.solve(forest)
+        self.assertEqual(res, 9)
