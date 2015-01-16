@@ -1,59 +1,52 @@
 # https://www.hackerrank.com/challenges/count-luck
+# inspire by Astaroth@hrank.io to use bfs
 
 
-def get_start_position(forest):
-    start = (0, 0)
+def get_start_and_exit_position(forest):
     for i, s in enumerate(forest):
-        x = s.find('M')
-        if x >= 0:
-            start = (i, x)
-    return start
+        for j, c in enumerate(s):
+            if c == 'M':
+                start = (i, j)
+            elif c == '*':
+                exit = (i, j)
+    return start, exit
 
 
-def move(forest, memo, curr, k):
-    def in_range(curr):
-        if curr[0] < 0 or curr[0] >= len(forest) \
-                or curr[1] < 0 or curr[1] >= len(forest[0]):
-            return False
+def bfs(forest, start, exit):
+    def get_next_pos(curr):
+        in_range = lambda curr: False if curr[0] < 0 or curr[0] >= len(forest) \
+            or curr[1] < 0 or curr[1] >= len(forest[0]) else True
+
+        pos = []
+        for d in [(0, -1), (0, 1), (1, 0), (-1, 0)]:
+            next_pos = (curr[0] + d[0], curr[1] + d[1])
+            if in_range(next_pos) and forest[next_pos[0]][next_pos[1]] != 'X' \
+                    and next_pos not in visited:
+                pos.append(next_pos)
+        return pos
+
+    visited = {}
+    queue = [(start, 0)]
+
+    while queue:
+        curr, k = queue.pop(0)
+        if curr in visited:
+            continue
         else:
-            return True
-
-    direct = [(0, -1), (0, 1), (1, 0), (-1, 0)]
-    if not in_range(curr):
-        return -1
-    if memo[curr[0]][curr[1]] == 1:
-        return -1
-    else:
-        memo[curr[0]][curr[1]] = 1
-        if forest[curr[0]][curr[1]] == '*':
-            return k
-        elif forest[curr[0]][curr[1]] == 'X':
-            return -1
-        else:
-            w = 0
-            prev = curr
-            for d in direct:
-                curr = (prev[0] + d[0], prev[1] + d[1])
-                if in_range(curr):
-                    x = forest[curr[0]][curr[1]]
-                    if memo[curr[0]][curr[1]] == 0 and \
-                            (x == '.' or x == '*'):
-                        w += 1
-            else:
-                if w > 1:
-                    k += 1
-            res = []
-            for d in direct:
-                curr = (prev[0] + d[0], prev[1] + d[1])
-                res.append(move(forest, memo, curr, k))
-            return max(res)
+            visited[curr] = 1
+            if curr == exit:
+                return k
+            next_pos = get_next_pos(curr)
+            if len(next_pos) > 1:
+                k += 1
+            for pos in next_pos:
+                queue.append((pos, k))
+    return None
 
 
 def solve(forest):
-    start = get_start_position(forest)
-    memo = [[0 for _ in forest[0]] for _ in forest]
-    k = move(forest, memo, start, 0)
-    return k
+    start, exit = get_start_and_exit_position(forest)
+    return bfs(forest, start, exit)
 
 if __name__ == '__main__':
     t = input()
