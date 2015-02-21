@@ -5,6 +5,6 @@
 while read line
 do
   List=("${List[@]}" $line) # add new item
-done < $1
+done
 
 echo ${List[@]/*[aA]*/} # print all item
