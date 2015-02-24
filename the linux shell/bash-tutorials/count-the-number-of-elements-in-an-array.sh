@@ -7,6 +7,4 @@ do
   List=("${List[@]}" $line) # add new item
 done
 
-List=("${List[@]}" "${List[@]}" "${List[@]}")
-
-echo ${List[@]} # print all item
+echo ${#List[@]} # print len of all item
