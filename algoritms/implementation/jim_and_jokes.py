@@ -1,31 +1,23 @@
 # https://www.hackerrank.com/challenges/jim-and-the-jokes
 
-import collections as cols
 
-
-def base_n(v, n):
-    value = 0
-    i = 0
-    while v != 0:
-        c = v % 10
-        if c >= n:
-            return -1
-        value += c * pow(n, i)
-        i += 1
-        v /= 10
-    return value
+def base_n(x, b):
+    try:
+        return int(str(x), b)
+    except:
+        return None
 
 
 def solve(l):
-    dec = []
+    cnt = {}
     jokes = 0
-    for i in range(len(l)//2):
-        a, b = l[2*i], l[2*i+1]
-        dec.append(base_n(b, a))
-    counter = cols.Counter(dec)
-    for i, v in counter.items():
-        if i > 0:
-            jokes += v*(v-1)//2 if v > 0 else 0
+    for i in range(0, len(l), 2):
+        x, b = l[i], l[i+1]
+        v = base_n(b, x)
+        if v:
+            cnt[v] = cnt.get(v, 0) + 1
+    for i, v in cnt.items():
+        jokes += v*(v-1)//2 if v > 0 else 0
     return jokes
 
 
