@@ -1,14 +1,20 @@
 # https://www.hackerrank.com/challenges/chief-hopper
 
+import math
+
 
 def solve(l):
-    req_energy = 0
-    deep = pow(2, len(l))
-    for v in l:
-        deep /= 2
-        req_energy += (v * deep)
-    q, r = divmod(req_energy, pow(2, len(l)))
-    init_energy = q + (1 if r else 0)
+    """"
+    Start at the end and trace back
+    We backtrack from the end and determine the energy needed to clear the
+    buildings ahead.
+
+    solution by https://www.hackerrank.com/ethan_t_sterling
+    """
+
+    init_energy = 0
+    for v in reversed(l):
+        init_energy = math.ceil((v + init_energy) / 2)
     return init_energy
 
 
