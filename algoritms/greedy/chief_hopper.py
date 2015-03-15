@@ -4,11 +4,11 @@
 def solve(l):
     req_energy = 0
     deep = pow(2, len(l))
-    ddeep = deep
     for v in l:
         deep /= 2
         req_energy += (v * deep)
-    init_energy = (req_energy / ddeep) + (1 if req_energy % ddeep else 0)
+    q, r = divmod(req_energy, pow(2, len(l)))
+    init_energy = q + (1 if r else 0)
     return init_energy
 
 
