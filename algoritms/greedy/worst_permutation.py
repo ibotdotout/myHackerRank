@@ -2,14 +2,17 @@
 
 
 def solve(l, k):
-    n = min(k, len(l))
-    max_l = sorted(l, reverse=True)
+    n = len(l)
+    indexs = [0 for _ in range(n+1)]
+    for i in range(len(l)):
+        indexs[l[i]] = i
     i = 0
-    while n and i < len(l):
-        idx = l.index(max_l[i])
-        if i != idx:
+    while k and i < n:
+        if l[i] != n-i:
+            k -= 1
+            idx = indexs[n-i]
             l[i], l[idx] = l[idx], l[i]
-            n -= 1
+            indexs[l[i]], indexs[l[idx]] = indexs[l[idx]], indexs[l[i]]
         i += 1
     return l
 
