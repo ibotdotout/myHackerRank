@@ -3,14 +3,11 @@
 
 def solve(l, k):
     n = len(l)
-    result = 0
-    for i in range(n):
-        m = l[i]
-        for v in l[i:]:
-            if v > m:
-                m = v
-            if m > k:
-                result += 1
+    result, p = 0, 0
+    for i, v in enumerate(l):
+        if v > k:
+            result += (i+1-p)*(n-i)
+            p = (i+1)
     return result
 
 
