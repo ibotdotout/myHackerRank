@@ -1,4 +1,7 @@
 # https://www.hackerrank.com/challenges/cyclicquadruples
+
+# Use General Principle of Inclusion and Exclusion to solve it
+
 # guild solution
 # http://hr-filepicker.s3.amazonaws.com/infinitum-may14/477-cyclicquadruples.pdf
 
