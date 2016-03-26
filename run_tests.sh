@@ -4,7 +4,7 @@ cmd="nosetests"
 $cmd python
 $cmd contests/w6
 $cmd contests/projecteuler
-$cmd algoritms/regex
+$cmd regex
 $cmd algoritms/warmup
 $cmd algoritms/search
 $cmd algoritms/math
