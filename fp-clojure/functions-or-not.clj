@@ -16,3 +16,12 @@
   )
   (println (if is-func? "YES" "NO"))
 )
+
+
+; short anwser to pass the test but may not cover all real-world cases
+
+;(dotimes [_ (read)]
+;  (def n (read))
+;  (def sets (set (repeatedly n #(first [(read) (read)]))))
+;  (println (if (= (count sets) n) "YES" "NO"))
+;)
