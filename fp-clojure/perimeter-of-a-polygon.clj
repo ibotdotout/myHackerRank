@@ -18,3 +18,16 @@
     )
   )
 )
+
+;; short version
+
+(defn distance [[x1 y1] [x2 y2]]
+  (Math/hypot (- x1 x2) (- y1 y2))
+)
+
+(let [n (read)
+      points (cycle (repeatedly n #(vec [(read) (read)])))
+      lst (take n points)
+      rst (rest points)]
+     (println (reduce + (map distance lst rst)))
+)
