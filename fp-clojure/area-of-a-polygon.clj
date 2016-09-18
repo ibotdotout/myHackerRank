@@ -9,5 +9,5 @@
       points (cycle (repeatedly n #(vec [(read) (read)])))
       lst (take n points)
       rst (rest points)]
-     (println (/ (Math/abs (reduce + (map calCross lst rst))) 2))
+     (println (float (/ (Math/abs (reduce + (map calCross lst rst))) 2)))
 )
