@@ -2,4 +2,4 @@
 
 (let [p (read-line)
       q (read-line)]
-      (println (clojure.string/join (map #(str %1%2) p q))))
+      (println (clojure.string/join (interleave p q))))
