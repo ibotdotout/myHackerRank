@@ -11,7 +11,7 @@
      (println)
 )
 
-; fine
+; fine, but use Regex
 
 (->> (read-line)
      (re-seq #"(\w)\1*")
@@ -20,3 +20,11 @@
      (apply str)
      (println)
 )
+
+; better
+
+(->> (read-line)
+     (partition-by identity)
+     (mapcat #(if (> (count %) 1) [(first %) (count %)] [(first %)]))
+     (apply str)
+     (println))
